@@ -1,0 +1,41 @@
+# Environment variables
+.env
+
+# Generated images and cache files
+news_images/
+temp_images/
+*_news_*.json
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+
+# Generated HTML reports
+*_report.html
+
+# Logs
+*.log
