@@ -33,10 +33,10 @@ def main():
                         help="Folder to save downloaded images")
     parser.add_argument("--strapi-url", default=config.STRAPI_URL,
                         help="Strapi API URL")
-    parser.add_argument("--strapi-token", help="Strapi API token")
+    parser.add_argument("--strapi-token", default= config.STRAPI_TOKEN ,help="Strapi API token")
     parser.add_argument("--strapi-collection", default="articles",
                         help="Strapi collection type name")
-    parser.add_argument("--upload-to-strapi", action="store_true",
+    parser.add_argument("--upload-to-strapi",default=True, action="store_true",
                         help="Upload news items to Strapi")
     parser.add_argument("--force-fetch", action="store_true",
                         help="Force fetching new news even if today's news exists")

@@ -60,7 +60,7 @@ class OpenAIService:
         [
             {{
                 "title": "Headline",
-                "summary": "2 paragraphs",
+                "summary": "3 paragraphs",
                 "source": "Source Name",
                 "published_date": "YYYY-MM-DD",
                 "category": "Specific subtopic"

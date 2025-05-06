@@ -31,7 +31,7 @@ class NewsManager:
         self.unsplash_service = unsplash_service
         self.strapi_service = strapi_service
     
-    def generate_news_items(self, category: str = "technology", count: int = 5) -> List[NewsItem]:
+    def generate_news_items(self, category: str = "technology", count: int = 1) -> List[NewsItem]:
         """
         Generate news items with associated images
         
