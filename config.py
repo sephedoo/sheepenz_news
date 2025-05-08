@@ -23,6 +23,6 @@ STRAPI_TOKEN = os.getenv("STRAPI_TOKEN")
 # Default settings
 DEFAULT_MODEL = "gpt-4"
 DEFAULT_IMAGE_MODEL = "dall-e-3"
-DEFAULT_CATEGORY = "technology"
-DEFAULT_COUNT = 5
+DEFAULT_CATEGORY = "AI"
+DEFAULT_COUNT = 1
 DEFAULT_IMAGE_FOLDER = "news_images"

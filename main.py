@@ -23,7 +23,7 @@ def main():
     parser.add_argument("-n", "--count", type=int, default=config.DEFAULT_COUNT,
                         help="Number of news items to fetch")
     parser.add_argument("-o", "--output", help="Output JSON file name")
-    parser.add_argument("-s", "--save", action="store_true", 
+    parser.add_argument("-s", "--save",default=True, action="store_true", 
                         help="Save results to JSON file")
     parser.add_argument("--html", action="store_true",
                         help="Generate HTML report")
@@ -71,9 +71,6 @@ def main():
         if args.output and args.save:
             news_manager.save_news_to_json(news_items, args.output)
             
-        # Generate HTML report if requested
-        if args.html:
-            generate_html_report(news_items, f"{args.category}_news_report.html")
             
         print(f"Successfully processed {len(news_items)} news items.")
             
@@ -81,57 +78,6 @@ def main():
         print(f"Error: {e}")
         traceback.print_exc()
 
-def generate_html_report(news_items, output_file):
-    """Generate a simple HTML report for the news items"""
-    html = """<!DOCTYPE html>
-<html>
-<head>
-    <title>News Report</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
-        .news-item { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
-        .news-title { font-size: 24px; margin-bottom: 10px; }
-        .news-meta { color: #666; margin-bottom: 10px; }
-        .news-summary { line-height: 1.5; }
-        img { max-width: 100%; height: auto; margin-bottom: 15px; }
-    </style>
-</head>
-<body>
-    <h1>Generated News Report</h1>
-"""
-    
-    for item in news_items:
-        html += f"""
-    <div class="news-item">
-        <h2 class="news-title">{item.title}</h2>
-        <div class="news-meta">
-            Source: {item.source}
-            {f" | Category: {item.category}" if item.category else ""}
-            {f" | Published: {item.published_date}" if item.published_date else ""}
-        </div>
-"""
-        
-        if item.image_url:
-            html += f'        <img src="{item.image_url}" alt="{item.title}">\n'
-        elif item.local_image_path:
-            html += f'        <img src="{os.path.relpath(item.local_image_path)}" alt="{item.title}">\n'
-            
-        html += f"""
-        <div class="news-summary">
-            {item.summary.replace("\n", "<br>")}
-        </div>
-    </div>
-"""
-    
-    html += """
-</body>
-</html>
-"""
-    
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write(html)
-        
-    print(f"HTML report generated: {output_file}")
 
 if __name__ == "__main__":
     main()
